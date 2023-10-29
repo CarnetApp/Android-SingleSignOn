@@ -82,7 +82,11 @@ public class ParcelFileDescriptorUtil {
                 }
                 mOut.flush(); // just to be safe
             } catch(java.lang.NullPointerException e){
-                mOut.flush(); // just to be safe
+                try{
+                    mOut.flush(); // just to be safe
+                } catch (IOException e) {
+
+                }
                 Log.d("TransferThread", "as always: NullPointerException");
             } catch (IOException e) {
                 Log.e("TransferThread", "writing failed", e);
